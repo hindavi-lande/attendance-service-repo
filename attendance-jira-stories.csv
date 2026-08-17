@@ -1,0 +1,59 @@
+Issue Type,Summary,Description,Priority,Labels
+Story,"Employee clock-in and clock-out","As an employee, I want to clock in when I start my workday and clock out when I finish, so that my working hours are recorded accurately without manual timesheets.
+
+Business value: Removes manual/paper attendance tracking and gives HR a reliable, real-time record of who is working and when.
+Acceptance Criteria:
+- I can clock in once per day and see a confirmation with the timestamp
+- I can clock out any time after clocking in
+- If I forget to clock out, the system flags it as an incomplete entry for follow-up
+- I can see my own attendance history for the current month",High,"attendance,employee-experience"
+Story,"Manager visibility into team attendance","As a manager, I want to see who on my team is present, absent, or late today, so that I can plan work and staffing without chasing people for updates.
+
+Business value: Gives managers a single view of team availability instead of relying on Slack/email check-ins.
+Acceptance Criteria:
+- A team attendance view shows each direct report's status for the current day (present, absent, late, on leave)
+- The view updates as employees clock in/out
+- Only a manager's own direct/indirect reports are visible to them",High,"attendance,management"
+Story,"Request and approve leave","As an employee, I want to request time off and have my manager approve or reject it, so that my absence is planned and reflected in attendance records.
+
+Business value: Replaces ad-hoc leave requests over email/chat with a trackable, auditable approval process.
+Acceptance Criteria:
+- An employee can submit a leave request with dates and a reason
+- The employee's manager receives the request and can approve or reject it with a comment
+- Approved leave automatically marks the employee as 'On Leave' for those dates in attendance records
+- The employee is notified of the decision",High,"attendance,leave-management"
+Story,"Attendance regularization for missed punches","As an employee, I want to request a correction when I forget to clock in or out, so that my attendance record reflects the day accurately instead of showing an absence.
+
+Business value: Reduces disputes and manual HR intervention caused by forgotten punches.
+Acceptance Criteria:
+- An employee can submit a regularization request for a specific date with a reason and the correct times
+- The request routes to their manager for approval
+- Approved regularizations update the attendance record and are marked as 'Regularized' (distinct from a normal punch) for audit purposes",Medium,"attendance,employee-experience"
+Story,"Company holiday calendar","As an HR administrator, I want to define a company-wide holiday calendar, so that employees are automatically marked as not working on holidays without needing to request leave.
+
+Business value: Avoids employees being incorrectly flagged as absent on holidays and reduces unnecessary leave requests.
+Acceptance Criteria:
+- HR can add/edit/remove holidays with a date and name
+- Attendance for any employee on a holiday date is automatically marked 'Holiday', not 'Absent'
+- Holidays are visible to all employees in a shared calendar view",Medium,"attendance,hr-admin"
+Story,"Shift scheduling and assignment","As an HR administrator, I want to define work shifts and assign employees to them, so that attendance is evaluated against each employee's expected working hours rather than a single fixed schedule.
+
+Business value: Supports teams with different working hours (e.g. day shift, night shift) instead of assuming one schedule for everyone.
+Acceptance Criteria:
+- HR can create shifts with a start time, end time, and name
+- Each employee can be assigned to a shift
+- 'Late' and 'early departure' flags are calculated relative to the employee's assigned shift, not a global default",Medium,"attendance,hr-admin"
+Story,"Monthly attendance summary report","As an HR administrator, I want a monthly attendance summary per employee (days present, absent, on leave, late), so that I can use it for payroll processing and compliance reporting without manually compiling data.
+
+Business value: Removes manual spreadsheet work HR currently does each pay cycle and reduces payroll errors from missed attendance data.
+Acceptance Criteria:
+- A report can be generated for a selected month, for one employee or the whole company
+- The report breaks down days present, absent, on leave, holiday, and late arrivals
+- The report can be exported (e.g. CSV) for use in payroll",Medium,"attendance,reporting,hr-admin"
+Story,"Sync employee roster from Employee Management System","As an HR administrator, I want new hires and role/department changes from the Employee Management System to automatically reflect in the attendance service, so that attendance records always match the current employee roster without duplicate data entry.
+
+Business value: Prevents attendance gaps or mismatches caused by keeping employee data in two systems manually.
+Acceptance Criteria:
+- When an employee is added, updated, or marked terminated in the Employee Management System, the attendance service reflects that change
+- A terminated employee can no longer clock in
+- Department/manager changes are reflected in the manager's team attendance view",Medium,"attendance,integration"
