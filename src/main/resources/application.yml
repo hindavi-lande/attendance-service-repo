@@ -2,5 +2,31 @@ spring:
   application:
     name: attendance-service
 
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:5434/attendance_service}
+    username: ${DB_USERNAME:postgres}
+    password: ${DB_PASSWORD:postgres}
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    open-in-view: false
+    properties:
+      hibernate:
+        format_sql: true
+    show-sql: false
+
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+    baseline-on-migrate: true
+    validate-on-migrate: true
+
 server:
   port: 8081
+
+logging:
+  level:
+    org.flywaydb: INFO
+    com.techverito.attendance: DEBUG
