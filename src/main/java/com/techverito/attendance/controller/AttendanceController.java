@@ -2,6 +2,8 @@ package com.techverito.attendance.controller;
 
 import com.techverito.attendance.dto.AttendanceEntryResponse;
 import com.techverito.attendance.dto.ClockRequest;
+import com.techverito.attendance.dto.LeaveRequestCreate;
+import com.techverito.attendance.dto.LeaveRequestDecision;
 import com.techverito.attendance.service.AttendanceService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -26,6 +28,21 @@ public class AttendanceController {
     @PostMapping("/clock-out")
     public AttendanceEntryResponse clockOut(@Valid @RequestBody ClockRequest request) {
         return attendanceService.clockOut(request.employeeId());
+    }
+
+    @PostMapping("/leave-requests")
+    public com.techverito.attendance.dto.LeaveRequestResponse submitLeaveRequest(
+            @Valid @RequestBody LeaveRequestCreate request
+    ) {
+        return attendanceService.submitLeaveRequest(request);
+    }
+
+    @PostMapping("/leave-requests/{leaveRequestId}/decision")
+    public com.techverito.attendance.dto.LeaveRequestResponse decideLeaveRequest(
+            @PathVariable Long leaveRequestId,
+            @Valid @RequestBody LeaveRequestDecision request
+    ) {
+        return attendanceService.decideLeaveRequest(leaveRequestId, request);
     }
 
     @GetMapping("/{employeeId}")
