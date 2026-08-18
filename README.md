@@ -15,13 +15,13 @@ Employee Management System. Schema changes are managed by [Flyway](https://flywa
 
 1. Start Postgres (runs on port 5434 so it doesn't collide with the Employee Management
    System's own database on 5432):
-   ```bash
+   bash
    docker compose up -d
-   ```
+   
 2. Run the app (Flyway migrates the schema automatically on startup):
-   ```bash
+   bash
    ./mvnw spring-boot:run
-   ```
+   
    Override connection details with env vars: `DB_URL`, `DB_USERNAME`, `DB_PASSWORD`.
 
 The service listens on port `8081`.
@@ -40,9 +40,9 @@ the `attendance_entries` table and `AttendanceService` introduced here.
 
 ## Tests
 
-```bash
+bash
 ./mvnw test
-```
+
 
 `AttendanceServiceImplTest` covers clock-in/clock-out business rules with mocks.
 `AttendanceServiceApplicationTests` uses Testcontainers to verify the Flyway migrations
