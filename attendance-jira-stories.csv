@@ -57,3 +57,11 @@ Acceptance Criteria:
 - When an employee is added, updated, or marked terminated in the Employee Management System, the attendance service reflects that change
 - A terminated employee can no longer clock in
 - Department/manager changes are reflected in the manager's team attendance view",Medium,"attendance,integration"
+Story,"Record employee attendance for the first time","As an employee, I want to clock in and clock out so that my working hours are actually recorded, not just planned as a feature.
+
+Business value: This is the very first working capability of the Attendance Service — every other attendance feature (leave, approvals, reports) depends on attendance actually being recorded somewhere first. This story should be delivered before any other attendance story.
+Acceptance Criteria:
+- I can clock in once per day and see a confirmation
+- I can clock out after clocking in
+- My clock-in and clock-out are saved and still there if I check back later
+- I can see my own attendance for the current month",High,"attendance,foundational"
