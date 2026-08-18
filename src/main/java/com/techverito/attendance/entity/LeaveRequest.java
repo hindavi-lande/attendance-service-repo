@@ -15,6 +15,12 @@ import java.time.LocalDateTime;
 @Builder
 public class LeaveRequest {
 
+    public enum LeaveStatus {
+        PENDING,
+        APPROVED,
+        REJECTED
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -22,17 +28,18 @@ public class LeaveRequest {
     @Column(name = "employee_id", nullable = false)
     private Long employeeId;
 
-    @Column(name = "requested_from", nullable = false)
-    private LocalDate requestedFrom;
+    @Column(name = "from_date", nullable = false)
+    private LocalDate fromDate;
 
-    @Column(name = "requested_to", nullable = false)
-    private LocalDate requestedTo;
+    @Column(name = "to_date", nullable = false)
+    private LocalDate toDate;
 
     @Column(name = "reason", nullable = false)
     private String reason;
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "status", nullable = false)
-    private String status;
+    private LeaveStatus status;
 
     @Column(name = "manager_id")
     private Long managerId;
@@ -40,11 +47,11 @@ public class LeaveRequest {
     @Column(name = "manager_comment")
     private String managerComment;
 
-    @Column(name = "approved_at")
-    private LocalDateTime approvedAt;
+    @Column(name = "submitted_at", nullable = false, updatable = false)
+    private LocalDateTime submittedAt;
 
-    @Column(name = "rejected_at")
-    private LocalDateTime rejectedAt;
+    @Column(name = "decided_at")
+    private LocalDateTime decidedAt;
 
     @Column(name = "created_at", nullable = false, updatable = false)
     private LocalDateTime createdAt;
@@ -55,6 +62,7 @@ public class LeaveRequest {
     @PrePersist
     void onCreate() {
         LocalDateTime now = LocalDateTime.now();
+        submittedAt = now;
         createdAt = now;
         updatedAt = now;
     }
@@ -62,11 +70,5 @@ public class LeaveRequest {
     @PreUpdate
     void onUpdate() {
         updatedAt = LocalDateTime.now();
-    }
-
-    public enum Status {
-        PENDING,
-        APPROVED,
-        REJECTED
     }
 }

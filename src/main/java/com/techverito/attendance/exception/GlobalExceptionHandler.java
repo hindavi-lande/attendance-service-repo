@@ -34,6 +34,16 @@ public class GlobalExceptionHandler {
         return ResponseEntity.badRequest().body(body);
     }
 
+    @ExceptionHandler(LeaveConflictException.class)
+    public ResponseEntity<Map<String, Object>> handleLeaveConflict(LeaveConflictException ex) {
+        return ResponseEntity.status(HttpStatus.CONFLICT).body(body(HttpStatus.CONFLICT, ex.getMessage()));
+    }
+
+    @ExceptionHandler(ForbiddenLeaveActionException.class)
+    public ResponseEntity<Map<String, Object>> handleForbidden(ForbiddenLeaveActionException ex) {
+        return ResponseEntity.status(HttpStatus.FORBIDDEN).body(body(HttpStatus.FORBIDDEN, ex.getMessage()));
+    }
+
     private Map<String, Object> body(HttpStatus status, String message) {
         Map<String, Object> body = new LinkedHashMap<>();
         body.put("timestamp", LocalDateTime.now());

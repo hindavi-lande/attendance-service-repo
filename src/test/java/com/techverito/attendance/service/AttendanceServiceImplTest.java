@@ -19,7 +19,6 @@ import java.util.Optional;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
@@ -71,6 +70,7 @@ class AttendanceServiceImplTest {
                 .id(1L)
                 .employeeId(employeeId)
                 .workDate(today)
+                .attendanceStatus(AttendanceEntry.AttendanceStatus.CLOCKED_IN)
                 .clockInAt(LocalDateTime.now())
                 .build();
 
@@ -106,6 +106,7 @@ class AttendanceServiceImplTest {
                 .id(1L)
                 .employeeId(employeeId)
                 .workDate(today)
+                .attendanceStatus(AttendanceEntry.AttendanceStatus.CLOCKED_IN)
                 .clockInAt(LocalDateTime.now().minusHours(8))
                 .build();
 
@@ -129,6 +130,7 @@ class AttendanceServiceImplTest {
                 .id(1L)
                 .employeeId(employeeId)
                 .workDate(today)
+                .attendanceStatus(AttendanceEntry.AttendanceStatus.CLOCKED_IN)
                 .clockInAt(LocalDateTime.now().minusHours(8))
                 .clockOutAt(LocalDateTime.now())
                 .build();

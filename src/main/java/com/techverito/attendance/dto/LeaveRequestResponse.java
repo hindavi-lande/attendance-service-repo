@@ -1,20 +1,20 @@
 package com.techverito.attendance.dto;
 
+import com.techverito.attendance.entity.LeaveRequest;
+
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public record LeaveRequestResponse(
         Long id,
         Long employeeId,
-        LocalDate requestedFrom,
-        LocalDate requestedTo,
+        LocalDate fromDate,
+        LocalDate toDate,
         String reason,
-        String status,
+        LeaveRequest.LeaveStatus status,
         Long managerId,
         String managerComment,
-        LocalDateTime approvedAt,
-        LocalDateTime rejectedAt,
-        LocalDateTime createdAt,
-        LocalDateTime updatedAt
+        LocalDateTime submittedAt,
+        LocalDateTime decidedAt
 ) {
 }

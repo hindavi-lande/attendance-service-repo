@@ -15,6 +15,11 @@ import java.time.LocalDateTime;
 @Builder
 public class AttendanceEntry {
 
+    public enum AttendanceStatus {
+        CLOCKED_IN,
+        ON_LEAVE
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -24,6 +29,10 @@ public class AttendanceEntry {
 
     @Column(name = "work_date", nullable = false)
     private LocalDate workDate;
+
+    @Column(name = "attendance_status", nullable = false)
+    @Enumerated(EnumType.STRING)
+    private AttendanceStatus attendanceStatus;
 
     @Column(name = "clock_in_at", nullable = false)
     private LocalDateTime clockInAt;
